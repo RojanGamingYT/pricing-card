@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Pricing Cards using HTML & CSS | CodingPorium</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+* {
+  box-sizing: border-box;
+}
+body{
+  background-color:#33b4ff;
+  font-family:poppins;
+}
+
+::selection{
+color:white;
+background:#111;
+}
+
+.columns {
+  float: left;
+  width: 30%;
+  margin-left:25px;
+  margin-right:10px;
+  padding: 8px;
+  background: rgba( 255, 255, 255, 0.25 );
+  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+  backdrop-filter: blur( 4px );
+  -webkit-backdrop-filter: blur( 4px );
+  border-radius: 10px;
+  border: 1px solid rgba( 255, 255, 255, 0.18 );
+  transition:transform 0.5s;
+}
+
+.price {
+  list-style-type: none;
+  margin: 0;
+  color:black;
+  padding: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.columns:hover {
+transform:scale(0.95);
+}
+
+.price .header {
+  background-color: #111;
+  border-radius:10px;
+  color: white;
+  font-size: 25px;
+}
+
+.price li {
+
+  padding: 20px;
+  text-align: center;
+}
+
+.price .grey {
+  font-size: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.button {
+  background-color: #381fdb;
+  border: none;
+  color: white;
+  padding: 10px 25px;
+  border-radius:5px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 18px;
+  transition:0.3s;
+}
+.button:hover{
+  background-color:#4c30ff;
+}
+
+@media only screen and (max-width: 600px) {
+  .columns {
+    width: 100%;
+  }
+}
+</style>
+</head>
+<body>
+
+&nbsp;<br>
+&nbsp;<br>
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#dbac1f;">Basic</li>
+    <li class="grey">$ 5 / month</li>
+    <li>Full Website</li>
+    <li>SSL Certificate</li>
+    <li>No Domain</li>
+    <li>Watermark added</li>
+    <li><a href="#" class="button">Sign Up</a></li>
+  </ul>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#381fdb">Premium</li>
+    <li class="grey">$ 10 / month</li>
+    <li>Full Website</li>
+    <li>SSL Certificate</li>
+    <li>Free Domain</li>
+    <li>Watermark added</li>
+    <li><a href="#" class="button">Sign Up</a></li>
+  </ul>
+</div>
+
+<div class="columns">
+  <ul class="price">
+    <li class="header" style="background-color:#2ab02f;">Ultimate</li>
+    <li class="grey">$ 15/ month</li>
+    <li>Full Website</li>
+    <li>SSL Certificate</li>
+    <li>Free Domain</li>
+    <li>No Watermark</li>
+    <li><a href="#" class="button">Sign Up</a></li>
+  </ul>
+</div>
+
+</body>
+</html>
