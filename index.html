@@ -1,130 +1,311 @@
 <!DOCTYPE html>
 <html>
-<head>
-<title>Pricing Cards using HTML & CSS | CodingPorium</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
-* {
-  box-sizing: border-box;
-}
-body{
-  background-color:#33b4ff;
-  font-family:poppins;
-}
-
-::selection{
-color:white;
-background:#111;
-}
-
-.columns {
-  float: left;
-  width: 30%;
-  margin-left:25px;
-  margin-right:10px;
-  padding: 8px;
-  background: rgba( 255, 255, 255, 0.25 );
-  box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
-  backdrop-filter: blur( 4px );
-  -webkit-backdrop-filter: blur( 4px );
-  border-radius: 10px;
-  border: 1px solid rgba( 255, 255, 255, 0.18 );
-  transition:transform 0.5s;
-}
-
-.price {
-  list-style-type: none;
-  margin: 0;
-  color:black;
-  padding: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.columns:hover {
-transform:scale(0.95);
-}
-
-.price .header {
-  background-color: #111;
-  border-radius:10px;
-  color: white;
-  font-size: 25px;
-}
-
-.price li {
-
-  padding: 20px;
-  text-align: center;
-}
-
-.price .grey {
-  font-size: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.button {
-  background-color: #381fdb;
-  border: none;
-  color: white;
-  padding: 10px 25px;
-  border-radius:5px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 18px;
-  transition:0.3s;
-}
-.button:hover{
-  background-color:#4c30ff;
-}
-
-@media only screen and (max-width: 600px) {
-  .columns {
-    width: 100%;
-  }
-}
+:root {  
+       --c-blue-900: #081030;  
+       --c-blue-800: #111b40;  
+       --c-blue-700: #152148;  
+       --c-blue-500: #1d7bdb;  
+       --c-blue-300: #293359;  
+       --c-blue-200: #4e5985;  
+       --c-blue-100: #dfe8ff;  
+       --c-green-400: #4ade80;  
+ }  
+ /* Some basic CSS overrides */  
+  body {  
+       line-height: 1.5;  
+       font-family: "Outfit", sans-serif;  
+       display: flex;  
+       align-items: center;  
+       justify-content: center;  
+       background-color: var(--c-blue-900);  
+       color: var(--c-blue-100);  
+       padding: 10vh 12px;  
+ }  
+  button, input, select, textarea {  
+       font: inherit;  
+ }  
+  a {  
+       color: inherit;  
+ }  
+ /* End basic CSS override */  
+  .price-table {  
+       background-color: var(--c-blue-700);  
+       border-radius: 16px;  
+       max-width: 375px;  
+       padding: 32px;  
+       display: flex;  
+       flex-direction: column;  
+       box-shadow: 0 15px 45px 0 rgba(0, 0, 0, 0.15);  
+       position: relative;  
+       background-image: linear-gradient(135deg, rgba(74, 222, 128, 0.15), rgba(29, 123, 219, 0.1) 20%, var(--c-blue-700) 40%, var(--c-blue-700) 100%);  
+ }  
+  .price-table:after {  
+       content: "";  
+       display: block;  
+       top: -3px;  
+       left: -3px;  
+       bottom: -3px;  
+       right: -3px;  
+       z-index: -1;  
+       position: absolute;  
+       border-radius: 16px;  
+       background-image: linear-gradient(135deg, var(--c-green-400), var(--c-blue-500) 40%, var(--c-blue-300) 60%, var(--c-blue-700) 100%);  
+ }  
+  .price-table .price {  
+       font-size: 3rem;  
+       line-height: 1;  
+       font-weight: 700;  
+       display: inline-flex;  
+       align-self: center;  
+       align-items: center;  
+       gap: 4px;  
+       position: relative;  
+       color: #fff;  
+ }  
+  .price-table .price small {  
+       font-size: 1.25rem;  
+       font-weight: 400;  
+       position: absolute;  
+       left: -1.5ch;  
+ }  
+  .price-table .title {  
+       font-size: 1.25rem;  
+       font-weight: 600;  
+       line-height: 1.25;  
+       text-align: center;  
+       margin-top: 16px;  
+       color: #fff;  
+ }  
+  .price-table .description {  
+       font-size: 1rem;  
+       text-align: center;  
+       margin-top: 4px;  
+ }  
+  .features {  
+       margin-top: 32px;  
+ }  
+  .feature {  
+       position: relative;  
+ }  
+  .feature + .feature {  
+       margin-top: 16px;  
+ }  
+  .feature summary {  
+       display: inline-flex;  
+       align-items: center;  
+       list-style: none;  
+ }  
+  .feature summary::-webkit-details-marker {  
+       display: none;  
+ }  
+  .feature[open] summary:after {  
+       content: "";  
+       display: block;  
+       top: 0;  
+       left: 0;  
+       right: 0;  
+       bottom: 0;  
+       position: fixed;  
+       z-index: 50;  
+ }  
+  .feature[open] div {  
+       animation: scale 0.15s ease;  
+ }  
+  .feature .checkmark {  
+       width: 24px;  
+       height: 24px;  
+       border-radius: 50%;  
+       background-color: var(--c-green-400);  
+       display: flex;  
+       align-items: center;  
+       justify-content: center;  
+       margin-right: 12px;  
+ }  
+  .feature .checkmark svg {  
+       width: 18px;  
+       height: 18px;  
+       color: #fff;  
+ }  
+  .feature .question-icon {  
+       display: flex;  
+       align-items: center;  
+       margin-left: 6px;  
+       cursor: pointer;  
+ }  
+  .feature .answer {  
+       padding: 12px;  
+       background-color: var(--c-blue-800);  
+       border-radius: 6px;  
+       position: absolute;  
+       top: -12px;  
+       z-index: 100;  
+       transform: translatey(-100%) translatex(-50%);  
+       transform-origin: bottom center;  
+       width: 80%;  
+       left: 50%;  
+       border: 1px solid var(--c-blue-300);  
+       box-shadow: 0 15px 30px 0 rgba(0, 0, 0, 0.1);  
+ }  
+  @keyframes scale {  
+       0% {  
+            transform: translatey(-100%) translatex(-50%) scale(0);  
+      }  
+       100% {  
+            transform: translatey(-100%) translatex(-50%) scale(1);  
+      }  
+ }  
 </style>
-</head>
 <body>
-
-&nbsp;<br>
-&nbsp;<br>
-<div class="columns">
-  <ul class="price">
-    <li class="header" style="background-color:#dbac1f;">Basic</li>
-    <li class="grey">$ 5 / month</li>
-    <li>Full Website</li>
-    <li>SSL Certificate</li>
-    <li>No Domain</li>
-    <li>Watermark added</li>
-    <li><a href="#" class="button">Sign Up</a></li>
-  </ul>
-</div>
-
-<div class="columns">
-  <ul class="price">
-    <li class="header" style="background-color:#381fdb">Premium</li>
-    <li class="grey">$ 10 / month</li>
-    <li>Full Website</li>
-    <li>SSL Certificate</li>
-    <li>Free Domain</li>
-    <li>Watermark added</li>
-    <li><a href="#" class="button">Sign Up</a></li>
-  </ul>
-</div>
-
-<div class="columns">
-  <ul class="price">
-    <li class="header" style="background-color:#2ab02f;">Ultimate</li>
-    <li class="grey">$ 15/ month</li>
-    <li>Full Website</li>
-    <li>SSL Certificate</li>
-    <li>Free Domain</li>
-    <li>No Watermark</li>
-    <li><a href="#" class="button">Sign Up</a></li>
-  </ul>
-</div>
-
+<div class="price-section">  
+      <article class="price-table">  
+           <div class="price"><small>$</small>99</div>  
+           <h2 class="title">Solo Version</h2>  
+           <p class="description">A single license for solo designers, developers and freelancers.  
+           </p>  
+           <div class="features">  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Single user licence</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          One user access.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Lifetime access</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          One fee. One time. Yours forever.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Free updates</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          You will gain access to every future update.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Use on unlimited projects</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          Create as many projects as you want.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Asset Hosting</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          Keep your files for easy access and management. 5GB space included. Scale when necessary.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Community support</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          Get help and learn new things in our community Slack with over 5,000 contributors.  
+                     </div>  
+                </details>  
+                <details class="feature">  
+                     <summary>  
+                          <i aria-hidden="true" class="checkmark">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M10 15.172l9.192-9.193 1.415 1.414L10 18l-6.364-6.364 1.414-1.414z" />  
+                               </svg>  
+                          </i>  
+                          <span class="name">Version control</span>  
+                          <i aria-hidden="true" class="question-icon">  
+                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">  
+                                    <path fill="none" d="M0 0h24v24H0z" />  
+                                    <path fill="currentColor" d="M12 22C6.477 22 2 17.523 2 12S6.477 2 12 2s10 4.477 10 10-4.477 10-10 10zm0-2a8 8 0 1 0 0-16 8 8 0 0 0 0 16zm-1-5h2v2h-2v-2zm2-1.645V14h-2v-1.5a1 1 0 0 1 1-1 1.5 1.5 0 1 0-1.471-1.794l-1.962-.393A3.501 3.501 0 1 1 13 13.355z" />  
+                               </svg>  
+                          </i>  
+                     </summary>  
+                     <div class="answer">  
+                          Instant rollbacks to any version  
+                     </div>  
+                </details>  
+           </div>  
+      </article>  
+ </div>  
 </body>
 </html>
